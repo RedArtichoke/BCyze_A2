@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BCyze - A2</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="code.js"></script>
+
+    <style>
+        #instructions {
+            position: absolute; /* Position overlay on top of the scene */
+            top: 20px; /* Position from the top */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust horizontal centering */
+            z-index: 999; /* Ensure it's on top of other elements */
+            color: white; /* Text color */
+            font-family: Arial, sans-serif; /* Font styling */
+            font-size: 18px; /* Font size */
+            padding: 10px; /* Padding around text */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            border-radius: 5px; /* Rounded corners */
+        }
+        #interact {
+            position: fixed;
+            left: 100px;
+            bottom: 100px;
+            padding: 25px;
+            z-index: 1000;
+        }
+        #edit {
+            position: fixed;
+            right: 100px;
+            bottom: 100px;
+            padding: 25px;
+            z-index: 1000;
+        }
+        #moveForward {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 50px;
+            z-index: 1000;
+        }
+      </style>
+</head>
+<body>
+    <!-- Instructions for the player -->
+    <div id="instructions">Press 'E' to pickup a cube! Press 'Q' to create a cube!</div>
+    <!-- Buttons for mobile users -->
+    <button id="interact">Pickup/Drop</button>
+    <button id="edit">Create/Destroy</button>
+    <button id="moveForward">Move Forward</button>
+
+    <a-scene>
+        <!-- Sky -->
+        <a-sky 
+            id="sky" 
+            color="#DDDDFF">
+        </a-sky>
+
+        <!-- Plane for "Ground" -->
+        <a-plane 
+            id="ground" 
+            position="0 0 0" 
+            rotation="-90 0 0" 
+            width="12" height="12" 
+            color="#090980">
+        </a-plane>
+        
+        <!-- Blue Cube -->
+        <a-box 
+            position="0 0.5 -5" 
+            rotation="0 45 0" 
+            width="1" height="1" depth="1" 
+            color="#0000FF" 
+            pickupable>
+        </a-box>
+
+        <!-- Red Cube -->
+        <a-box 
+            position="-5 0.5 -5" 
+            rotation="0 45 0" 
+            width="1" height="1" depth="1" 
+            color="#FF0000" 
+            pickupable>
+        </a-box>
+        
+        <!-- Green Cube -->
+        <a-box 
+            position="5 0.5 -5" 
+            rotation="0 45 0" 
+            width="1" height="1" depth="1" 
+            color="#00FF00" 
+            pickupable>
+        </a-box>
+
+        <!-- Camera -->
+        <a-camera 
+            position="0 1.6 0" 
+            boundary-check>
+
+            <a-text 
+                id="boundaryMessage" 
+                value="WHERE\n DO YOU THINK\n YOU'RE GOING?" 
+                color="red" 
+                align="center"
+                position="0 0 -3" 
+                scale="6 6 6" 
+                visible="false">
+            </a-text>
+        </a-camera>
+    </a-scene>
+</body>
+</html>
